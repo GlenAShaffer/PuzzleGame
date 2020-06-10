@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Level.gd" type="Script" id=1]
+[ext_resource path="res://Art/Sound/243020__plasterbrain__game-start.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Flag.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Character.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Box.tscn" type="PackedScene" id=6]
+[ext_resource path="res://TileSet3.tres" type="TileSet" id=7]
+
+[node name="Level" type="Node"]
+script = ExtResource( 1 )
+winningScore = 4
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 100, 100 )
+format = 1
+tile_data = PoolIntArray( -458755, 0, 0, -458754, 0, 0, -458753, 0, 0, -393224, 0, 0, -393223, 0, 0, -393222, 0, 0, -393221, 0, 0, -393220, 0, 0, -393219, 0, 0, -393218, 1, 0, -393217, 0, 0, -327688, 0, 0, -327687, 1, 0, -327686, 1, 0, -327685, 1, 0, -327684, 1, 0, -327683, 1, 0, -327682, 1, 0, -327681, 0, 0, -262152, 0, 0, -262151, 1, 0, -262150, 0, 0, -262149, 0, 0, -262148, 0, 0, -262147, 0, 0, -262146, 1, 0, -262145, 0, 0, -196616, 0, 0, -196615, 1, 0, -196614, 0, 0, -196611, 0, 0, -196610, 1, 0, -196609, 0, 0, -131080, 0, 0, -131079, 1, 0, -131078, 0, 0, -131075, 0, 0, -131074, 1, 0, -131073, 0, 0, -65546, 0, 0, -65545, 0, 0, -65544, 0, 0, -65543, 1, 0, -65542, 0, 0, -65541, 0, 0, -65540, 0, 0, -65539, 0, 0, -65538, 1, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -10, 0, 0, -9, 1, 0, -8, 0, 0, -7, 1, 0, -6, 1, 0, -5, 1, 0, -4, 1, 0, -3, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 0, 0, 65526, 0, 0, 65527, 1, 0, 65528, 0, 0, 65529, 1, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 1, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 131062, 0, 0, 131063, 1, 0, 131064, 1, 0, 131065, 1, 0, 131066, 0, 0, 131069, 0, 0, 131070, 1, 0, 131071, 0, 0, 196598, 0, 0, 196599, 0, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196605, 0, 0, 196606, 1, 0, 196607, 0, 0, 262141, 0, 0, 262142, 1, 0, 262143, 0, 0, 327677, 0, 0, 327678, 1, 0, 327679, 0, 0, 393213, 0, 0, 393214, 1, 0, 393215, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 0, 0 )
+
+[node name="Flag" parent="." instance=ExtResource( 3 )]
+position = Vector2( 450, -50 )
+
+[node name="Flag2" parent="." instance=ExtResource( 3 )]
+position = Vector2( -150, -650 )
+
+[node name="Flag3" parent="." instance=ExtResource( 3 )]
+position = Vector2( -848, -48 )
+
+[node name="Flag4" parent="." instance=ExtResource( 3 )]
+position = Vector2( -150, 544 )
+
+[node name="Character" parent="." instance=ExtResource( 5 )]
+position = Vector2( -150, -50 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="VictoryNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="Box" parent="." instance=ExtResource( 6 )]
+position = Vector2( 150, -50 )
+
+[node name="Box2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -448, -48 )
+[connection signal="hit" from="Flag" to="." method="update_score"]
+[connection signal="hit" from="Flag2" to="." method="update_score"]
+[connection signal="hit" from="Flag3" to="." method="update_score"]
+[connection signal="hit" from="Flag4" to="." method="update_score"]
